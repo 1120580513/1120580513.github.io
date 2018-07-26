@@ -4,7 +4,7 @@
 
 ---
 * [sql](#)
-  * [mssql-ddl](https://github.com/1120580513/1120580513.github.io/sql/mssql-ddl.md)
+  * [mssql-ddl](sql/mssql-ddl.md)
   * [mssql-tsql](https://github.com/1120580513/1120580513.github.io/sql/mssql-tsql.md)
   * [mysql](https://github.com/1120580513/1120580513.github.io/sql/mysql.md)
   * [sql-dml](https://github.com/1120580513/1120580513.github.io/sql/sql-dml.md)
