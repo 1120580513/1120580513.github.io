@@ -4,14 +4,16 @@
 
 ---
 [参考](https://blog.jooq.org/2016/04/25/10-sql-tricks-that-you-didnt-think-were-possible/?utm_source=dbweekly&utm_medium=email)
-##派生表
+
+## 派生表
 ```sql
 SELECT * FROM (
 SELECT * FROM (VALUES(1,2),(3,4),(5,6)) AS t(a,b)
 ) x
 ```
-##递归
-###CTE
+## 递归
+
+### CTE
 ```sql
 WITH
   t1(v1, v2) AS (SELECT 1, 2),
@@ -36,12 +38,13 @@ CROSS JOIN t1 c
 )
 SELECT COUNT(1) FROM t2
 ```
-###变量
+
+### 变量
 ```sql
 --TODO
 ```
 
-##窗口函数
+## 窗口函数
 ```sql
 SELECT ROW_NUMBER() OVER(ORDER BY TABLE_NAME) row_id,* 
 FROM INFORMATION_SCHEMA.TABLES

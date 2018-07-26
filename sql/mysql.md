@@ -4,8 +4,9 @@
 
 ---
 
-##系统数据库
-###master
+## 系统数据库
+
+### master
 > 由系统表组成，**保存关于磁盘空间、文件分配和使用、系统层次的配置信息、端点登陆帐号的信息，当前实例的数据库信息和系统上其他SQL Server的存在信息**。
 ###model
 > 该数据库是一相模板数据库，每**创建新数据库时，SQL Server会复制model数据库作为数据库的基础**。
@@ -24,12 +25,13 @@ FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Binn
 )
 FOR ATTACH
 ```
-###msdb
+
+### msdb
 > **SQL Server代理服务、Service Broker会使用该库**。
 
 ---
 
-##sys
+## sys
 ```sql
 SELECT * FROM sys.objects WHERE type = 'u'
 SELECT * FROM sys.tables
@@ -59,7 +61,8 @@ EXEC sys.sp_helpdb
 EXEC sys.sp_helplogins
 EXEC sys.sp_helpfile
 ```
-###阻塞与被阻塞的SQL脚本
+
+### 阻塞与被阻塞的SQL脚本
 ```sql
 SELECT 
 bl.spid blocking_session,bl.blocked blocked_session,st.text blockedtext,sb.text blockingtext
@@ -81,7 +84,7 @@ FROM(
 ) sb
 WHERE bl.blocked = st.session_id and bl.spid = sb.session_id
 ```
-###查询死锁
+### 查询死锁
 ```sql
 SELECT * FROM master..SysProcesses
 WHERE db_Name(dbID) = '数据库名'

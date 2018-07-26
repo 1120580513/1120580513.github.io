@@ -3,6 +3,7 @@
 标签（空格分隔）： MSSQL TSQL
 
 ---
+
 ##BULK 行集提供程序([官方文档](https://docs.microsoft.com/zh-cn/sql/relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server?view=sql-server-2014))
 ```sql
 SELECT * FROM OPENROWSET(BULK 'C:\WeekSpace\a.txt',FORMATFILE = 'C:\WeekSpace\a.fmt') AS x
@@ -24,12 +25,12 @@ u,i,y,p
 4 SQLCHAR 0 100 "\r\n" 4 Col4 SQL_Latin1_General_CP1_CI_AS
 ```
 
-##FOR XML
+## FOR XML
 ```sql
 SELECT * FROM (VALUES(1)) AS t(n) FOR XML PATH('')
 ```
 
-##临时表
+## 临时表
 ```sql
 --局部临时表
 SELECT * INTO #t FROM (VALUES(1,2,3),(4,5,6)) AS t(a,b,c)
@@ -39,7 +40,7 @@ SELECT * INTO ##t2 FROM (VALUES(1,2,3),(4,5,6)) AS t(a,b,c)
 SELECT * FROM ##t2
 ```
 
-##游标
+## 游标
 ```sql
 DECLARE c CURSOR FAST_FORWARD FOR SELECT * FROM (VALUES(1),(2),(3),(4)) AS t(n)--创建并填充游标
 OPEN c--打开游标
@@ -54,7 +55,7 @@ CLOSE c--关闭
 DEALLOCATE c--删除游标
 ```
 
-##用户定义函数
+## 用户定义函数
 ```sql
 ----------标量函数
 CREATE FUNCTION dbo.fn_sum(
@@ -84,7 +85,7 @@ GO
 SELECT * FROM dbo.fn_rang(10)
 ```
 
-##存储过程
+## 存储过程
 ```sql
 CREATE PROCEDURE dbo.proc_print(
 @nbr INT 
@@ -119,7 +120,10 @@ EXEC dbo.proc_select 1,@i OUTPUT
 SELECT @i
 ```
 
-##触发器
-##事务
-##错误处理
-##Service Broker
+## 触发器
+
+## 事务
+
+## 错误处理
+
+## Service Broker

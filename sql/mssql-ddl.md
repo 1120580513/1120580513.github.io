@@ -3,8 +3,9 @@
 标签（空格分隔）： SQL DDL
 
 ---
-##DATABASE
-###CREATE
+## DATABASE
+
+### CREATE
 ```sql
 IF DB_ID('TEST') IS NOT NULL DROP DATABASE TEST
 GO
@@ -69,7 +70,8 @@ WITH
 DB_CHAINING OFF--DB_CHAINING指定数据库可不可以为跨数据库所有权链的源或目标
 ,TRUSTWORTHY OFF--TRUSTWORTHY指定模拟上下文中的数据库模块能不能访问数据库以外的资源
 ```
-###BACKUP | DETACH | ATTACH ... : DATABASE
+
+### BACKUP | DETACH | ATTACH ... : DATABASE
 ```sql
 --- 创建 备份数据的 device
 USE master
@@ -87,8 +89,9 @@ EXECUTE sp_renamedb 'old_name', 'new_name'
 DROP DATABASE TestDB
 ```
 
-##TABLE | VIEW | INDEX | UDT
-###CREATE TABLE
+## TABLE | VIEW | INDEX | UDT
+
+### CREATE TABLE
 ```sql
 USE [TripOrderDB]
 GO
@@ -122,7 +125,8 @@ GO
 EXECUTE sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单表' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Order'
 GO
 ```
-###TABLE | VIEW | INDEX | 权限 | UDT
+
+### TABLE | VIEW | INDEX | 权限 | UDT
 ```sql
 --表
 TRUNCATE TABLE tb
