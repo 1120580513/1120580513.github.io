@@ -7,4 +7,5 @@
 
 ## NoSQL 
 `CouchDB` `Redis` `MongoDB` `Riak` `Membase` `Neo4j` `Cassandra` `HBase`
+
 [详细](http://blog.jobbole.com/1344/)

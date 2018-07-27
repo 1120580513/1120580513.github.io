@@ -3,7 +3,7 @@
 标签（空格分隔）： SQL Terminology
 
 ---
-
+* [术语](terminology.md)
 * [db](#)
   * [db](db/db.md)
 * [frame](#)
@@ -14,7 +14,6 @@
   * [mssql-tsql](sql/mssql-tsql.md)
   * [mssql](sql/mssql.md)
   * [sql-dml](sql/sql-dml.md)
-  * [sql-terminology(术语)](sql/sql-terminology(术语).md)
   * [sql](sql/sql.md)
 
 ## 1120580513.github.io
