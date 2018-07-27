@@ -1,9 +1,16 @@
 # SQL-DML
 
-标签（空格分隔）： SQL DML
-
 ---
 [参考](https://blog.jooq.org/2016/04/25/10-sql-tricks-that-you-didnt-think-were-possible/?utm_source=dbweekly&utm_medium=email)
+
+* [SQL\-DML](#sql-dml)
+  * [派生表](#%E6%B4%BE%E7%94%9F%E8%A1%A8)
+  * [递归](#%E9%80%92%E5%BD%92)
+    * [CTE](#cte)
+    * [变量](#%E5%8F%98%E9%87%8F)
+  * [窗口函数](#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0)
+  * [优化](#%E4%BC%98%E5%8C%96)
+    * [索引失效的操作](#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%93%8D%E4%BD%9C)
 
 ## 派生表
 ```sql
@@ -55,3 +62,13 @@ FROM INFORMATION_SCHEMA.TABLES
 --lag(colName,offset,defval) 向前偏移offset个的值，如果超出取defval
 --lead(colName,offset,defval) 向后偏移offset个的值，如果超出取defval
 ```
+
+## 优化
+### 索引失效的操作
+ - 和NULL的判断操作
+ - != <>操作
+ - OR
+ - LIKE
+ - 使用表达式：WHERE num = 100 * 2
+ - 使用函数
+ - 在WHERE和ORDER BY中不要对索引字段进行计算

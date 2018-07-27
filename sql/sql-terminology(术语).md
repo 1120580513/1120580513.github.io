@@ -1,7 +1,5 @@
 # SQL-Terminology(术语)
 
-标签（空格分隔）： SQL Terminology
-
 ---
  - **`DBMS(Database Management System)`** 数据库管理系统
  - **`DDL(Data Definition Language)`** 数据库模式定义语言

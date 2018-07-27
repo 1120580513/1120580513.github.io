@@ -1,8 +1,14 @@
 # SQL
 
-标签（空格分隔）： SQL
-
 ---
+
+* [SQL](#sql)
+* [SQL标准(<a href="https://blog\.csdn\.net/lengye7/article/details/80606489" rel="nofollow">源</a>)](#sql%E6%A0%87%E5%87%86%E6%BA%90)
+* [三大范式(<a href="https://blog\.csdn\.net/dove\_knowledge/article/details/71434960" rel="nofollow">详细</a>)](#%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E8%AF%A6%E7%BB%86)
+* [事务(<a href="https://www\.cnblogs\.com/fjdingsd/p/5273008\.html" rel="nofollow">源</a>)](#%E4%BA%8B%E5%8A%A1%E6%BA%90)
+  * [问题(如果没有隔离性)](#%E9%97%AE%E9%A2%98%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E9%9A%94%E7%A6%BB%E6%80%A7)
+  * [事务隔离级别](#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB)
+
 # SQL标准([源](https://blog.csdn.net/lengye7/article/details/80606489))
  1. **1986年，ANSI X3.135-1986，ISO/IEC 9075:1986，`SQL-86`**
  2. **1989年，ANSI X3.135-1989，ISO/IEC 9075:1989，`SQL-89`**

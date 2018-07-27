@@ -1,10 +1,16 @@
 # MSSQL-DDL
 
-标签（空格分隔）： SQL DDL
-
 ---
-## DATABASE
 
+* [MSSQL\-DDL](#mssql-ddl)
+  * [DATABASE](#database)
+    * [CREATE](#create)
+    * [BACKUP | DETACH | ATTACH \.\.\. : DATABASE](#backup--detach--attach---database)
+  * [TABLE | VIEW | INDEX | UDT](#table--view--index--udt)
+    * [CREATE TABLE](#create-table)
+    * [TABLE | VIEW | INDEX | 权限 | UDT](#table--view--index--%E6%9D%83%E9%99%90--udt)
+
+## DATABASE
 ### CREATE
 ```sql
 IF DB_ID('TEST') IS NOT NULL DROP DATABASE TEST
