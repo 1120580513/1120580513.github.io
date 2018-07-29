@@ -25,7 +25,7 @@
  3. 在`2NF`的前提下确保每列都和主键列直接相关,而不是间接相关`3NF`
 
 # 事务([源](https://www.cnblogs.com/fjdingsd/p/5273008.html))
-##ACID
+## ACID
  - 原子性（Atomicity）
  - 一致性（Consistency）
  - 隔离性（Isolation）
