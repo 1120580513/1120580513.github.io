@@ -4,6 +4,7 @@
 
 ---
 * [术语](terminology.md)
+* [computer](computer/cumputerbase.md)
 * [db](#)
   * [db](db/db.md)
 * [frame](#)
