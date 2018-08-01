@@ -31,6 +31,7 @@ public class Class1
         Nullable<int> nbrnullable = new int?(0);//可空类型
         var str = null ?? "sdfsdf";
         str = o?.ToString();
+        Action<string> action = delegate(string str){};//匿名函数
     }
     static Class1() { }//静态构造函数
     //字段 属性 方法
@@ -156,16 +157,64 @@ t.GetMethod("a", BindingFlags.Instance | BindingFlags.Public | BindingFlags.Stat
 ## 动态语言扩展
 * `DynamicObject` `ExpandoObject`
 
-## Emit
+## 加密服务提供程序(CSP)
+```csharp
+MD5 md5 = new MD5CryptoServiceProvider();
+var buffer = Encoding.Default.GetBytes(value);
+var md5Str = BitConverter.ToString(buffer).Replace("-","");
+```
+* `HashAlgorithm`
+* `SHA1CryptoServiceProvider` `SHA256CryptoServiceProvider` `SHA384CryptoServiceProvider` `SHA512CryptoServiceProvider` `MD5CryptoServiceProvider` **Hash**
+* `DESCryptoServiceProvider()` `AesCryptoServiceProvider` `TripleDESCryptoServiceProvider(3Des)` `RC2CryptoServiceProvider` **对称**
+* `RSACryptoServiceProvider` `DSACryptoServiceProvider` **非对称**
 
-## 序列化
-### 文件序列化反序列化
-### XML、JSON、Image Helper
+---
 
-## 加密解密
-### RSA、DES，MD5加密类封装
+```csharp
+byte[] bytes = new byte[16];
+RNGCryptoServiceProvider r = new RNGCryptoServiceProvider();
+for (int i = 0; i < 10; i++)
+{
+    r.GetBytes(bytes);
+    int number = (int) ((decimal) bytes[0] / 256 * 100) + 1;//1-100
+    Console.WriteLine(number);
+}
+r.Dispose();
+```
+* `RNGCryptoServiceProvider` **加密随机数生成器**
 
-## 异步和多线程
+## 异步编程
+* **`线程同步`** *当一个线程执行递增或递减操作时其他线程需要依次等待*
+* **`原子操作`** *操作只占用一个量子的时间，一次就可以完成*
+* **`上下文切换`** *指操作系统的线程调度器，保存等待的线程的状态，并切换到另一个线程，依次恢复等待的线程状态*
+* **`用户模式`** *让线程只是简单的等待(while)，虽然浪费CPU时间，但节省了上下文切换的CPU消耗*
+* **`内核模式`** *让线程进入阻塞状态(Sleep)，当处于阻塞状态时，只会占用尽可能少的CPU时间，但是该词条我非常引入一次上下文切换*
+* **`混合模式`** *先尝试用户模式，如果线程等待了足够长的时间，会切换到阻塞模式以节省CPU资源*
+
+---
+
+### 线程、任务
+* `Thread` `ThreadPool` `Timer`
+* `await/async` `Task` `Parallel` `CancellationTokenSource`
+
+### 同步
+* `(EventWaitHandler,Semaphore)：WaitHandle`
+* `(AutoResetEvent,ManualResetEvent)：EventWaitHandler`
+
+---
+
+* `Monitor(lock)` `SpinLock(自旋锁)` `SpinWait(自旋等待)` `Interlocked(原子操作)` `Mutex(互斥量)`
+* `Semaphore、SemaphoreSlim` 限制访问同一个资源的线程数量
+* `ManualResetEvent、AutoResetEvent、ManualResetEventSlim` 在线程间传递信号
+* `CountDowmEvent` 等待一定数量的操作完成
+* `Barrier` 障碍(使多个任务能够采用并行方式依据某种算法在多个阶段中协同工作)
+* `ReaderWriterLockSlim` 允许多个线程同时读取及独占写
+> lock语法糖内部使用Monitor.Entry()和Monitor.Exit()
+> SpinLock会先使用用户模式，在多个迭代后使用内核模式
+> 具名的Mutex是操作系统对象，一定要关闭，最好使用using
+> SemaphoreSlim使用混合模式，Semaphore使用内核模式
+> ManualResetEvent
+
 ### 线程安全、异常处理、线程取消
 ### Thread、ThreadPool、异步、Task、await/async、Parallel
 
