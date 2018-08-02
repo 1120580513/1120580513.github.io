@@ -234,35 +234,16 @@ r.Dispose();
 ---
 
 * `Monitor(lock)` `SpinLock(自旋锁)` `SpinWait(自旋等待)` `Interlocked(原子操作)` `Mutex(互斥量)`
-* `Semaphore、SemaphoreSlim` 限制访问同一个资源的线程数量
-* `ManualResetEvent、AutoResetEvent、ManualResetEventSlim` 在线程间传递信号
+* `SemaphoreSlim` 限制访问同一个资源的线程数量
+* `AutoResetEvent、ManualResetEventSlim` 在线程间传递信号
 * `CountDowmEvent` 等待一定数量的操作完成
 * `Barrier` 障碍(使多个任务能够采用并行方式依据某种算法在多个阶段中协同工作)
 * `ReaderWriterLockSlim` 允许多个线程同时读取及独占写
 > lock语法糖内部使用Monitor.Entry()和Monitor.Exit()
 > SpinLock会先使用用户模式，在多个迭代后使用内核模式
 > 具名的Mutex是操作系统对象，一定要关闭，最好使用using
-> SemaphoreSlim使用混合模式，Semaphore使用内核模式
-> ManualResetEvent
-
-### 线程安全、异常处理、线程取消
-### Thread、ThreadPool、异步、Task、await/async、Parallel
-
-## 面向对象编程 O0P (封装、继承、多态，接口抽象类选择)
-
-## 面向切面编程AOP (OOP思想补充，C#多种实现AOP，定制个性化AOP扩展)
 
 ## CLR核心机制
 ### 异常和状态管理
 ### 托管堆和垃圾回收
 ### CLR寄宿和性能提升
-
-## 设计模式六大原则(单-职责、里氏替换、依赖倒置、接口隔离、迪米特、开闭〉
-
-## 设计模式专训(单例、三大工厂、 装饰器、迭代器、观察者、代理等)
-
-## 数据库设计优化(数据库设计、分库分表表分区、读写分离高可用、索引优化、执行计划分析)
-
-## DDD领域驱动设计(学习领域驱动设计，POP-OOP-DDD，用EF完成领域模型设计)
-
-## 缓存原理和应用，解析各环节Cache、封装缓存基类
