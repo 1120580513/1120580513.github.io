@@ -1,14 +1,14 @@
-# MSSQL-DDL
+# MSSQL*DDL
 
----
+***
 
-* [MSSQL\-DDL](#mssql-ddl)
+* [MSSQL\*DDL](#mssql*ddl)
   * [DATABASE](#database)
     * [CREATE](#create)
-    * [BACKUP | DETACH | ATTACH \.\.\. : DATABASE](#backup--detach--attach---database)
-  * [TABLE | VIEW | INDEX | UDT](#table--view--index--udt)
-    * [CREATE TABLE](#create-table)
-    * [TABLE | VIEW | INDEX | 权限 | UDT](#table--view--index--%E6%9D%83%E9%99%90--udt)
+    * [BACKUP | DETACH | ATTACH \.\.\. : DATABASE](#backup**detach**attach***database)
+  * [TABLE | VIEW | INDEX | UDT](#table**view**index**udt)
+    * [CREATE TABLE](#create*table)
+    * [TABLE | VIEW | INDEX | 权限 | UDT](#table**view**index**%E6%9D%83%E9%99%90**udt)
 
 ## DATABASE
 ### CREATE
@@ -16,7 +16,7 @@
 IF DB_ID('TEST') IS NOT NULL DROP DATABASE TEST
 GO
 CREATE DATABASE TEST
-ON PRIMARY (--指定主文件组
+ON PRIMARY (**指定主文件组
 NAME=TEST_DAT_MAIN1
 ,FILENAME='D:/SQL2008DATAS/TEST_DAT_MAIN1.MDF'
 ,SIZE=3MB
@@ -29,7 +29,7 @@ NAME=TEST_DAT_MAIN2
 ,MAXSIZE=UNLIMITED
 ,FILEGROWTH=5MB
 )
-,FILEGROUP TEST_DAT_SUB1 DEFAULT (--指定用户文件组,DEFAULT：如果创建用户数据没有明确指定就放到这个文件
+,FILEGROUP TEST_DAT_SUB1 DEFAULT (**指定用户文件组,DEFAULT：如果创建用户数据没有明确指定就放到这个文件
 NAME=TEST_DAT_SUB1
 ,FILENAME='D:/SQL2008DATAS/TEST_DAT_SUB1.MDF'
 ,SIZE=2MB
@@ -50,7 +50,7 @@ NAME=TEST_DAT_SUB3
 ,FILEGROWTH=5MB
 )
 ,FILEGROUP TEST_DAT_FILESTREAM1 CONTAINS FILESTREAM (
---CONTAINS FILESTREAM：指定文件组在文件系统中存储 FILESTREAM 二进制大型对象 (BLOB).FILESTREAM里面只能有一个文件
+**CONTAINS FILESTREAM：指定文件组在文件系统中存储 FILESTREAM 二进制大型对象 (BLOB).FILESTREAM里面只能有一个文件
 NAME=TEST_DAT_FILESTREAM1
 ,FILENAME='E:/SQL2008DATAS/TEST_DAT_FILESTREAM1.MDF'
 )
@@ -58,7 +58,7 @@ NAME=TEST_DAT_FILESTREAM1
 NAME=TEST_DAT_FILESTREAM2
 ,FILENAME='E:/SQL2008DATAS/TEST_DAT_FILESTREAM2.MDF'
 )
-LOG ON (--日志
+LOG ON (**日志
 NAME=TEST_LOG1
 ,FILENAME='D:/SQL2008DATAS/TEST_LOG1.LDF'
 ,SIZE=10MB
@@ -73,25 +73,25 @@ NAME=TEST_LOG2
 )
 COLLATE CHINESE_PRC_CI_AS
 WITH
-DB_CHAINING OFF--DB_CHAINING指定数据库可不可以为跨数据库所有权链的源或目标
-,TRUSTWORTHY OFF--TRUSTWORTHY指定模拟上下文中的数据库模块能不能访问数据库以外的资源
+DB_CHAINING OFF**DB_CHAINING指定数据库可不可以为跨数据库所有权链的源或目标
+,TRUSTWORTHY OFF**TRUSTWORTHY指定模拟上下文中的数据库模块能不能访问数据库以外的资源
 ```
 
 ### BACKUP | DETACH | ATTACH ... : DATABASE
 ```sql
---- 创建 备份数据的 device
+*** 创建 备份数据的 device
 USE master
 EXEC sp_addumpdevice 'disk', 'testBack', 'c:\ \ mssql7backup\ \ MyNwind_1.
 dat'
---- 开始 备份
+*** 开始 备份
 BACKUP DATABASE pubs TO testBack
---分离
+**分离
 EXECUTE sp_detach_db ElmahLog
---附加
+**附加
 EXECUTE sp_attach_db 'C:/...'
---重命名
+**重命名
 EXECUTE sp_renamedb 'old_name', 'new_name'
---删除
+**删除
 DROP DATABASE TestDB
 ```
 
@@ -125,7 +125,7 @@ CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED
 GO
 SET ANSI_PADDING OFF
 GO
---添加注释
+**添加注释
 EXECUTE sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单ID号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Order', @level2type=N'COLUMN',@level2name=N'OrderID'
 GO
 EXECUTE sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单表' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Order'
@@ -134,19 +134,19 @@ GO
 
 ### TABLE | VIEW | INDEX | 权限 | UDT
 ```sql
---表
+**表
 TRUNCATE TABLE tb
---视图
+**视图
 CREATE VIEW viewname AS select statement
 DROP VIEW viewname
---索引
+**索引
 CREATE [UNIQUE] INDEX idxname on tabname(col„.)
 DROP INDEX idxnam
---权限
---授权
+**权限
+**授权
 GRANT SELECT,UPDATE,DELETE,INSERT,DELETE ON tb TO user1
---删除权限
+**删除权限
 REVOKE SELECT,UPDATE ON tb FROM user1
---用户定义数据类型
+**用户定义数据类型
 CREATE TYPE phone_number FROM NVARCHAR(20) NOT NULL
 ```
