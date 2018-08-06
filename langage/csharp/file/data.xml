@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sqlMap namespace="NewProp.Data.DAL" xmlns="http://ibatis.apache.org/mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    <!--
+       <isEqual>  比较属性值和静态值或另一个属性值是否相等。 
+       <isNotEqual>  比较属性值和静态值或另一个属性值是否不相等。 
+       <isGreaterThan>  比较属性值是否大于静态值或另一个属性值。 
+       <isGreaterEqual>  比较属性值是否大于等于静态值或另一个属性值。 
+       <isLessThan>  比较属性值是否小于静态值或另一个属性值。 
+       <isLessEqual>  比较属性值是否小于等于静态值或另一个属性值。
+       <isPropertyAvailable> 检查是否存在该属性（存在parameter bean的属性）  
+       <isNotPropertyAvailable>  检查是否不存在该属性（不存在parameter bean的属性） 
+       <isNull>  检查属性是否为null 
+       <isNotNull>  检查属性是否不为null 
+       <isEmpty>  检查Collection.size()的值，属性的String或String.valueOf()值,是否为null或空（“”或size() < 1） 
+       <isNotEmpty>  检查Collection.size()的值，属性的String或String.valueOf()值,是否不为null或不为空（“”或size() > 0） 
+       <isParameterPresent>  检查是否存在参数对象（不为null） 
+       <isNotParameterPresent>  例子：<isNotParameterPresent prepend=”AND”>EMPLOYEE_TYPE = ‘DEFAULT’</isNotParameterPresent> 
+        -->
+    <select id="SelectNote" resultClass="DAL.Entity" parameterClass="Hashtable">
+      <![CDATA[select * from Notes]]>
+     <dynamic prepend="WHERE 1=1">
+        <isNotEmpty property="Id">
+          <![CDATA[ AND Id = #Id#]]>
+        </isNotEmpty>
+      </dynamic>
+    </select>
+  </statements>
+</sqlMap>

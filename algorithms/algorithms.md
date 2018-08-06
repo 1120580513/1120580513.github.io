@@ -5,17 +5,18 @@
 ## 排序
 ### 选择(冒泡)
 ```csharp
-for (int i = 0; i < array.Length; i++)
+int l = a.Length, pos;
+for (int i = 0; i < l - 1; i++)
 {
-    for (int j = i + 1; j < array.Length; j++)
+    pos = i;
+    for (int j = pos + 1; j < l; j++)
     {
-        if (array[j] < array[i])
-        {
-            array[i] = array[i] ^ array[j];
-            array[j] = array[i] ^ array[j];
-            array[i] = array[i] ^ array[j];
-        }
+        if (a[j] < a[pos])
+            pos = j;
     }
+    var tem = a[i];
+    a[i] = a[pos];
+    a[pos] = tem;
 }
 ```
 > 将第i个元素和i~n个元素比较，找出最小的元素和i交换位置

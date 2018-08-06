@@ -18,19 +18,9 @@
   * [异步编程](#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B)
     * [线程、任务](#%E7%BA%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1)
     * [同步](#%E5%90%8C%E6%AD%A5)
-    * [线程安全、异常处理、线程取消](#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%BA%BF%E7%A8%8B%E5%8F%96%E6%B6%88)
-    * [Thread、ThreadPool、异步、Task、await/async、Parallel](#threadthreadpool%E5%BC%82%E6%AD%A5taskawaitasyncparallel)
-  * [面向对象编程 O0P (封装、继承、多态，接口抽象类选择)](#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-o0p-%E5%B0%81%E8%A3%85%E7%BB%A7%E6%89%BF%E5%A4%9A%E6%80%81%E6%8E%A5%E5%8F%A3%E6%8A%BD%E8%B1%A1%E7%B1%BB%E9%80%89%E6%8B%A9)
-  * [面向切面编程AOP (OOP思想补充，C\#多种实现AOP，定制个性化AOP扩展)](#%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8Baop-oop%E6%80%9D%E6%83%B3%E8%A1%A5%E5%85%85c%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0aop%E5%AE%9A%E5%88%B6%E4%B8%AA%E6%80%A7%E5%8C%96aop%E6%89%A9%E5%B1%95)
-  * [CLR核心机制](#clr%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6)
-    * [异常和状态管理](#%E5%BC%82%E5%B8%B8%E5%92%8C%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)
-    * [托管堆和垃圾回收](#%E6%89%98%E7%AE%A1%E5%A0%86%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6)
-    * [CLR寄宿和性能提升](#clr%E5%AF%84%E5%AE%BF%E5%92%8C%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87)
-  * [设计模式六大原则(单\-职责、里氏替换、依赖倒置、接口隔离、迪米特、开闭〉](#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99%E5%8D%95-%E8%81%8C%E8%B4%A3%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E8%BF%AA%E7%B1%B3%E7%89%B9%E5%BC%80%E9%97%AD)
-  * [设计模式专训(单例、三大工厂、 装饰器、迭代器、观察者、代理等)](#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E8%AE%AD%E5%8D%95%E4%BE%8B%E4%B8%89%E5%A4%A7%E5%B7%A5%E5%8E%82-%E8%A3%85%E9%A5%B0%E5%99%A8%E8%BF%AD%E4%BB%A3%E5%99%A8%E8%A7%82%E5%AF%9F%E8%80%85%E4%BB%A3%E7%90%86%E7%AD%89)
-  * [数据库设计优化(数据库设计、分库分表表分区、读写分离高可用、索引优化、执行计划分析)](#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E8%A1%A8%E5%88%86%E5%8C%BA%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E9%AB%98%E5%8F%AF%E7%94%A8%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E5%88%86%E6%9E%90)
-  * [DDD领域驱动设计(学习领域驱动设计，POP\-OOP\-DDD，用EF完成领域模型设计)](#ddd%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1pop-oop-ddd%E7%94%A8ef%E5%AE%8C%E6%88%90%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1)
-  * [缓存原理和应用，解析各环节Cache、封装缓存基类](#%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8%E8%A7%A3%E6%9E%90%E5%90%84%E7%8E%AF%E8%8A%82cache%E5%B0%81%E8%A3%85%E7%BC%93%E5%AD%98%E5%9F%BA%E7%B1%BB)
+  * [T4](#t4)
+    * [说明](#%E8%AF%B4%E6%98%8E)
+    * [Demo](#demo)
 
 ## 基础语法
 ```csharp
@@ -243,4 +233,42 @@ r.Dispose();
 > SpinLock会先使用用户模式，在多个迭代后使用内核模式
 > 具名的Mutex是操作系统对象，一定要关闭，最好使用using
 
-## 缓存原理和应用，解析各环节Cache、封装缓存基类
+## T4
+* [manager.ttinclude](file/manager.ttinclude)
+### 说明
+```csharp
+<#@ template debug="false" hostspecific="false" language="C#"#> 
+//debug：是否可调试，hostspecific：是否提供Host属性，language：语言
+<#@ assembly name="System.Core"#>
+//添加dll
+<#@ import namespace="System.Linq"#>
+//类似于 using System.Linq
+<#@ output extension=".txt"#>
+// 输出文件的后缀名
+<#@ include file="manager.ttinclude"#>
+//等效于将manager.ttinclude的文本放到此位置
+<#@ parameter type="System.String" name="ParameterName"#>
+//type：参数类型，ParameterName：参数名称
+//语法说明：
+<#   标准控制块    #> //可以包含语句。
+<#= 表达式控制块 #> //可以包含表达式。
+<#+ 类特征控制块 #> //可以包含方法、字段和属性，就像一个类的内部。
+```
+### Demo
+```csharp
+<#@ include file="manager.ttinclude" #>
+<#    var manager = Manager.Create(Host,GenerationEnvironment); #>
+<#    manager.StartHeader(); #>
+using System;
+<#    manager.EndBlock(); #>
+<# manager.StartNewFile("Employee.cs"); #> 
+public class Employee {  } 
+<# manager.EndBlock(); #> 
+<# manager.StartNewFile("User.cs"); #> 
+public class User {  } 
+<# manager.EndBlock(); #> 
+<# manager.StartFooter(); #> 
+// It's the end 
+<# manager.EndBlock(); #> 
+<# manager.Process(true); #>
+``
