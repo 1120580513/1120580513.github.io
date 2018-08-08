@@ -3,7 +3,7 @@
 ---
 
 ## 排序
-### 选择(冒泡)
+### 选择
 ```csharp
 int l = a.Length, pos;
 for (int i = 0; i < l - 1; i++)
@@ -55,8 +55,93 @@ while (h >= 1)
 > 使数组中任意间隔为n的元素都是有序的。
 > **N很大时可以考虑使用希尔排序**
 ### 归并
+#### 归并操作
+```csharp
+static int[] aux;
+static void merge(int[] a, int lo, int mid, int hi)
+{
+    int le = lo, ri = mid + 1;
+    for (int i = lo; i <= hi; i++)
+    {
+        aux[i] = a[i];
+    }    
+    for (int i = lo; i <= hi; i++)
+    {
+        if (le > mid) a[i] = aux[ri++];
+        else if (ri > hi) a[i] = aux[le++];
+        else if (aux[ri] < aux[le]) a[i] = aux[ri++];
+        else a[i] = aux[le++];
+    }
+}
+```
+> 将一个数组分成若干个有序数组，再对他们进行合并。
+#### 自上向下归并
+```csharp
+public static void Sort(int[] a)
+{
+    var l = a.Length;
+    if (l < 2) return;
+    aux = new int[l];
+    Sort(a, 0, l - 1);
+}
+private static void Sort(int[] a, int lo, int hi)
+{
+    if (hi <= lo) return;
+    var mid = (lo + hi) / 2;
+    Sort(a, lo, mid);
+    Sort(a, mid + 1, hi);
+    merge(a, lo, mid, hi);
+}
+```
+#### 自下向上归并
+```csharp
+var n = a.Length;
+aux = new int[n];
+for (int i = 1; i < n; i *= 2)
+{
+    for (int j = 0; j < n - i; j += i * 2)
+    {
+        merge(a, j, j + i - 1, Math.Min(j + i + i - 1, n - 1));
+    }
+}
+```
+> 当n%2==0时，自下向上和自上向下的比较次数和访问次数正好相同
+> 归并告诉我们，当能用一种方法解决问题时，你都应该试试另一种
 ### 快速
-### 优先队列
+```csharp
+public override void Sort(int[] a)
+{
+    var n = a.Length;
+    Sort(a, 0, n - 1);
+}
+void Sort(int[] a, int lo, int hi)
+{
+    if (lo >= hi) return;
+    //打乱数组
+    var j = Partition(a, lo, hi);
+    Sort(a, 0, j - 1);
+    Sort(a, j + 1, hi);
+}
+int Partition(int[] a, int lo, int hi)
+{
+    int le = lo, ri = hi + 1, tmp;
+    var nbr = a[lo];
+    while (true)
+    {
+        while (a[++le] < nbr) if (le == hi) break;
+        while (a[--ri] > nbr) if (ri == lo) break;
+        if (le >= ri) break;
+        tmp = a[le];
+        a[le] = a[ri];
+        a[ri] = tmp;
+    }
+    tmp = a[ri];
+    a[ri] = a[lo];
+    a[lo] = tmp;
+    return ri;
+}
+```
+### 堆排序
 
 ## 查找
 ### 二分查找
