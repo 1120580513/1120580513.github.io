@@ -51,6 +51,8 @@
 **个人资料记录！**
 
 ## 链接
+- **常见单词读音**：*https://github.com/shimohq/chinese-programmer-wrong-pronunciation*
 - **系统设计**：*https://github.com/donnemartin/system-design-primer*
-- **学习**：*https://github.com/topics/awesome*
+- **快捷键学习**：*https://www.shortcutfoo.com/app/dojos/*
+- **awesome**：*https://github.com/topics/awesome*
 - **csharpkit**：*https://www.csharpkit.com/*
