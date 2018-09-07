@@ -52,3 +52,18 @@
 * **process.nextTick** 队列，O(1)，优先级最高
 * **setTimeout** 红黑树，O(lg(n))，优先级中等
 * **setImmediate** 每次循环执行一个，优先级低
+
+## Npm
+
+```shell
+# 安装
+npm install package
+# cnmp 淘宝镜像
+npm install -global cnpm --registry=https://registry.npm.taobao.org
+# nodemon、dev-server  监视文件夹，自动重启
+cnmp install --save-dev nodemon
+# json-server 以json文件开启数据接口服务
+cnmp install --save-dev json-server
+
+```
+

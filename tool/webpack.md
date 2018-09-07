@@ -6,16 +6,19 @@
 > **babel** *编译js的平台*
 
 ## 安装
-```cpp
-//webpack
+```shell
+#webpack
 npm install -g webpack//全局安装
 npm install --save-dev webpack//安装到项目目录
 npm init//初始化package.json文件
 npm install --save-dev webpack//在当前项目中引入webpack
 npm install --save-dev webpack-dev-server//webpack-dev-server
 
-//babel
-npm install --save-dev babel-core babel-loader@7.1.5 babel-preset-env//babel-loader^8.*会报@babel/core的错
+#babel
+#babel-core：提供 Babel 的 API
+#babel-polyfill：转移 ES6 的 API
+#babel-loader^8.*会报@babel/core的错
+npm install --save-dev babel-core babel-loader@7.1.5 babel-preset-env
 npm install --save-dev babel-react react react-dom//主流框架解析
 
 ```
