@@ -2,7 +2,6 @@
 
 ---
 
-* [术语](terminology.md)
 * [computer](#)
   * [computerbase](computer/computerbase.md)
 * [db](#)
