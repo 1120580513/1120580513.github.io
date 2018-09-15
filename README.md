@@ -47,7 +47,7 @@
   * [vscode](tool/vscode.md)
 
 ## 1120580513.github.io
-**个人资料记录！**
+**个人资料、笔记！**
 
 ## 链接
 - **常见单词读音**：*https://github.com/shimohq/chinese-programmer-wrong-pronunciation*
