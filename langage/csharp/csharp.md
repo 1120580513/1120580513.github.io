@@ -119,35 +119,35 @@ public static class Class2
 
 ## 集合
  ### 接口
- * **IEnumerable、IEnumerator** *将foreach用于集合*
- * **ICollection：IEnumerable** *提供Count、CopyTo、Add、Remove、Clear等方法*
- * **IList：ICollection,IEnumerable** *提供索引器，提供Insert、RemoveAt等方法*
- * **ISet：ICollection,IEnumerable** *提供索引器，提供Insert、RemoveAt等方法*
+ * **IEnumerable、IEnumerator** *将 foreach 用于集合*
+ * **ICollection：IEnumerable** *提供 Count、CopyTo、Add、Remove、Clear等方法*
+ * **IList：ICollection,IEnumerable** *提供索引器，提供 Insert、RemoveAt 等方法*
+ * **ISet：ICollection,IEnumerable** *提供索引器，提供 Insert、RemoveAt等方法*
  * **IDictionary：ICollection,IEnumerable** *Key：Value*
  * **ILookup** *Key：Value[]*
  * **IProducerConsumerCollection** *线程安全集合*
- ---
+---
  * **IComparer、IEqualityComparer** *比较器(可实现集合排序、可比较字典的K和对象*
- ---
+---
  * **IReadOnlyCollection、IReadOnlyDictionary、IReadOnlyList** *只读集合*
- ---
+---
  * **IImmutableList、IImmutableDictionary、IImmutableQueue、IImmutableSet、IImmutableStack** *不可变集合*
  ### 常用集合
  * `List` `LinkList` `Dictionary` `Queue` `Stack` `HashSet` `BitArray(BitVector32)` `BlockingCollection`
  * `SortedList` `SortedDictionary` `SortedSet`
  * `ReadOnly[只读集合]` `Immutable[不可变集合]` `Concurrent[并发集合]` `ObservableCollection(元素发生变化时触发事件)`
 
- | 集合 | Add | Insert | Remove | Item | Sort | Find |
- |-----|-----|--------|--------|-------|-----|-------|
- | List | O(1)【重置大小:O(n)】 | O(n) | O(n) | O(1) | O(n log n)【最坏是O(n^2)】 |  |
- | Stack | Push():O(1)【重置大小:O(n)】 | n/a | Pop():O(1) | n/a | n/a | n/a |
- | Queue | Qnqueue():O(1)【重置大小:O(n)】 | n/a | Dequeue:O(1) | n/a | n/a | n/a |
- | HashSet | O(1)【重置大小:O(n)】 | Add():O(1)或O(n) | O(1) | n/a | n/a | n/a |
- | SortSet | O(1)【重置大小:O(n)】 | Add():O(1)或O(n) | O(1) | n/a | n/a | n/a |
- | LinkList | AddLast():O(1) | AddAfter():O(1) | O(1) | n/a | n/a | O(n) |
- | Dictionary | O(1)【重置大小:O(n)】 | n/a | O(1) | O(1) | n/a | n/a |
- | SortedDictionary | O(log n) | n/a | O(log n) | O(log n) | n/a | n/a |
- | SortedList | 无序:O(n),至尾部:O(log n),重置大小:O(n) | n/a | O(n) | RW:O(log n),containKey:O(log n),!containKey:O(n) | n/a | n/a |
+| 集合 | Add | Insert | Remove | Item | Sort | Find |
+|-----|-----|--------|--------|-------|-----|-------|
+| List | O(1)【重置大小:O(n)】 | O(n) | O(n) | O(1) | O(n log n)【最坏是O(n^2)】 |  |
+| Stack | Push():O(1)【重置大小:O(n)】 | n/a | Pop():O(1) | n/a | n/a | n/a |
+| Queue | Qnqueue():O(1)【重置大小:O(n)】 | n/a | Dequeue:O(1) | n/a | n/a | n/a |
+| HashSet | O(1)【重置大小:O(n)】 | Add():O(1)或O(n) | O(1) | n/a | n/a | n/a |
+| SortSet | O(1)【重置大小:O(n)】 | Add():O(1)或O(n) | O(1) | n/a | n/a | n/a |
+| LinkList | AddLast():O(1) | AddAfter():O(1) | O(1) | n/a | n/a | O(n) |
+| Dictionary | O(1)【重置大小:O(n)】 | n/a | O(1) | O(1) | n/a | n/a |
+| SortedDictionary | O(log n) | n/a | O(log n) | O(log n) | n/a | n/a |
+| SortedList | 无序:O(n),至尾部:O(log n),重置大小:O(n) | n/a | O(n) | RW:O(log n),containKey:O(log n),!containKey:O(n) | n/a | n/a |
 
  > 使用列表作为自动增长的集合，队列以先进先出的方式访问元素，堆以先进后出的方式访问元素。链表可以快速插入和删除元素，但搜索较慢，通过键和值可以使用字典他的插入和搜索较快，集用于唯一项，可以是有序的也可以是无序的
 
@@ -272,3 +272,8 @@ public class User {  }
 <# manager.EndBlock(); #> 
 <# manager.Process(true); #>
 ``
+```
+
+## 反向工程
+
+* `NET.Reflector` `ildasm40` `dnSpy`

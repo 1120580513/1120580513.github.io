@@ -42,3 +42,34 @@ mongo
 >show users
 >exit
 ```
+
+## CSharp Drive
+
+```csharp
+
+private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["MongoConnectionString"].ConnectionString;
+private static readonly MongoClient _client = new MongoClient(_connectionString);
+private static readonly IMongoDatabase _database = _client.GetDatabase("DB");
+IMongoCollection<MsgEntity> collection = _database.GetCollection<MsgEntity>("MsgDB201809");
+var sort = Builders<MsgEntity>.Sort.Descending("CreateTime");
+var filterBuilder = Builders<MsgEntity>.Filter;
+var filter = filterBuilder.Empty;
+if (null != dto)
+{
+    if (false == string.IsNullOrEmpty(dto.AppNo))
+        filter &= filterBuilder.Eq(x => x.AppNo, dto.AppNo);
+    if (false == string.IsNullOrEmpty(dto.Identification))
+        filter &= filterBuilder.Eq(x => x.Identification, dto.Identification);
+    if (dto.StartOn.HasValue)
+        filter &= filterBuilder.Gte(x => x.CreateTime, dto.StartOn.Value);
+    if (dto.EndOn.HasValue)
+        filter &= filterBuilder.Lte(x => x.CreateTime, dto.EndOn.Value);
+}
+return collection
+    .Find(filter)
+    .Sort(sort)
+    .Skip((dto.Index - 1) * dto.Length)
+    .Limit(dto.Length)
+    .ToListAsync().Result;
+```
+
