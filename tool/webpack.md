@@ -6,14 +6,11 @@
 > **babel** *编译js的平台*
 
 ## 安装
-<<<<<<< HEAD
-
 ```cpp
 //webpack
 =======
-```shell
+​```shell
 #webpack
->>>>>>> 90044b2a86b042012475d8278325b4e1cfa8b179
 npm install -g webpack//全局安装
 npm install --save-dev webpack webpack-cli//安装到项目目录
 npm init//初始化package.json文件
