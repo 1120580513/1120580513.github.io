@@ -7,3 +7,8 @@
 ## Console
 * **$0** *当前选中的元素*
 * **$_** *上次Console的返回结果*
+
+## Plug-In
+
+* `wappalyzer` 分析网站使用技术
+
