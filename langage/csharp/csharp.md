@@ -1,103 +1,189 @@
 # CSharp
 
+* [C#历史](https://docs.microsoft.com/zh-cn/dotnet/csharp/whats-new/csharp-version-history)
+
 ---
 
-* [CSharp](#csharp)
-  * [基础语法](#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95)
-  * [泛型](#%E6%B3%9B%E5%9E%8B)
-    * [理解泛型原理](#%E7%90%86%E8%A7%A3%E6%B3%9B%E5%9E%8B%E5%8E%9F%E7%90%86)
-    * [泛型约束](#%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F)
-    * [协变逆变](#%E5%8D%8F%E5%8F%98%E9%80%86%E5%8F%98)
-  * [集合](#%E9%9B%86%E5%90%88)
-    * [接口](#%E6%8E%A5%E5%8F%A3)
-    * [常用集合](#%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88)
-  * [表达式解析，解析表达式](#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%9E%90%E8%A1%A8%E8%BE%BE%E5%BC%8F)
-  * [反射](#%E5%8F%8D%E5%B0%84)
-  * [动态语言扩展](#%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80%E6%89%A9%E5%B1%95)
-  * [加密服务提供程序(CSP)](#%E5%8A%A0%E5%AF%86%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8Fcsp)
-  * [异步编程](#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B)
-    * [线程、任务](#%E7%BA%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1)
-    * [同步](#%E5%90%8C%E6%AD%A5)
-  * [T4](#t4)
-    * [说明](#%E8%AF%B4%E6%98%8E)
-    * [Demo](#demo)
+## 语法
 
-## 基础语法
 ```csharp
-using System;
-using x = System;
-using static System.String;
+#define DEFINE//定义预处理器指令
 
-public class Class1
-{
-#if DEBUG
-    	//如果是DEBUG会执行的代码
+using System;
+using x = System;//别名
+using System.Collections;
+using System.Collections.Generic;
+//C# 6.0 静态导入
+using static System.Console;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+#region  预处理器指令
+#if DEFINE
+//如果是DEBUG会执行的代码
 #endif
-#region
-    	//折叠功能
+#warning "遇到此指使会在警告窗口显示";
 #endregion
-#warning "遇到此指使会在警告窗口显示"
-#error "遇到此指使会在错误窗口显示"
-    public Class1() //构造函数
+
+namespace ConsoleApp1
+{
+    class Programe
     {
-    	object o = null;
-        Type t = typeof(string);
-        var nbr = default(int);
-        var name = nameof(nbr);
-        checked { }//检查算术溢出
-        unchecked { }//不检查算术溢出
-        unsafe { }//不安全代码(需要:项目->属性->生成>允许不安全代码)
-        Lazy<object> lazy = new Lazy<object>();//懒加载
-        Nullable<int> nbrnullable = new int?(0);//可空类型
-        var str = null ?? "sdfsdf";
-        str = o?.ToString();
-        Action<string> action = delegate(string str){};//匿名函数
-    }
-    static Class1() { }//静态构造函数
-    //字段 属性 方法
-    public delegate void ClickHandler();
-    public event ClickHandler Click;
-    public void AddClickHandler()
-    {
-        Click += () => { };//绑定事件
-        Click -= () => { };//解除绑定
-        Click.Invoke();//触发事件
-    }
-    public static explicit operator string(Class1 x)//显示类型转换
-    {
-        return x.ToString();
-    }
-    public static implicit operator int(Class1 x)//隐式类型转换
-    {
-        return int.Parse(x.ToString());
-    }
-    public static Class1 operator +(Class1 c)//运算答重载
-    {
-        return c;
-    }
-    public int this[int i]//索引器
-    {
-        get { return 0; }
-        set { var nbr = value; }
-    }
-    public IEnumerable<int> GetRange(int length)//迭代器
-    {
-        for (int i = 0; i < length; i++)
+        //入口
+        static int Main(string[] args)
         {
-            yield return i;
+            return 0;
         }
     }
-    ~Class1() { }
-}
-public static class Class2
-{
-    static Class2()
+
+    /// <summary>
+    /// 枚举
+    /// </summary>
+    [Flags]//特性、注解
+    public enum Enum1
     {
-        global::System.Int32 nbr = "3".ToInt();//global::从全局开始查找
+        a = 0x00000001,
+        b = 0x00000010
     }
-    public static int ToInt(this string str)//扩展方法只能在静态类中
+
+    /// <summary>
+    /// 结构体
+    /// </summary>
+    public struct Struct1
     {
-        return int.Parse(str);
+        public int MyProperty { get; set; }
+        public void Function() { }
+    }
+    //协变：T 仅用于返回值，IOutInterface<父类> = IOutInterface<子类>
+    public interface IOutInterface<out T> { }
+    //抗变：T 仅用于参数值，父类 = 子类
+    public interface IInInterface<in T> { }
+
+    /// <summary>
+    /// 类
+    /// </summary>
+    // partial：分部类型 C# 2.0
+    public partial class Class1
+    {
+        void KeyWord()
+        {
+            object o = null;
+            Type t = typeof(string);//得到 Type
+            var nbr = default(int);//默认值
+            var name = nameof(nbr);//得到变量名 C# 6.0
+            checked { }//检查算术溢出
+            unchecked { }//不检查算术溢出
+            //unsafe { }//不安全代码(需要:项目->属性->生成>允许不安全代码)
+
+            //grammar
+
+            var mopera = 3 > 4 ? 0 : 1;//三元运算符
+            var nullgrammer = null ?? string.Empty;//空运算符
+            var nullx = nullgrammer?.ToString();//Null 传播器 C# 6.0
+            var format = $"ac{nullgrammer}";//拼接
+            var aa = @"//可换行
+asdfsdf ""//转义："" => 引号 
+";
+        }
+        static Class1() { }
+        public Class1() : this("") { }
+        public Class1(string a) { }
+
+        private readonly string _readonly_field;//只读
+        private string _field;
+        private int? _nullable;//可空类型
+        private Nullable<int> _nullable2;//可空类型
+
+        public string Property
+        {
+            private get { return _field; }
+            set { _field = value; }
+        }
+        public string AutoImplProperty { get; set; }//自动实现的属性
+        public string InitProperty { get; set; } = "";//属性初始值
+
+        public delegate void DelegateHandler(string a);
+        void _handler(string x) { }
+        public event DelegateHandler Events;
+        void InvokeEvent()
+        {
+            Events += _handler;
+            Events -= _handler;
+            Events += s => { };//lambda
+            Events += delegate (string a) { };//匿名方法 C# 2.o
+            Events.Invoke(string.Empty);//执行事件
+        }
+
+        public static explicit operator string(Class1 x)//显示类型转换
+        {
+            return x.ToString();
+        }
+        public static implicit operator int(Class1 x)//隐式类型转换
+        {
+            return int.Parse(x.ToString());
+        }
+        public static Class1 operator +(Class1 c)//运算答重载
+        {
+            return c;
+        }
+
+        public int this[int i]//索引器
+        {
+            get { return 0; }
+            set { var nbr = value; }
+        }
+
+        public IEnumerator GetEnumerator()//迭代器
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                yield return i;
+            }
+        }
+        public void OutParam(out int a, ref int b)
+        {
+            a = 3;//out 必须要赋值
+            b = 2;//ref 引用传递
+        }
+        //async & await C# 5.0
+        async void TestAsync(
+            //调用方信息 C# 5.0
+            [System.Runtime.CompilerServices.CallerMemberName]string memberName = "调用方的方法或属性名称",
+            //源文件中调用方法的行号
+            [System.Runtime.CompilerServices.CallerLineNumber]int lineNumber = 0,
+            [System.Runtime.CompilerServices.CallerFilePath]string filePath = "调用方的源文件的路径")
+        {
+            try
+            {
+                await Task.FromResult(0);
+            }
+            catch (Exception) when (DateTime.Now == DateTime.Now)
+            {
+
+                throw;
+            }
+        }
+
+        ~Class1() { }
+    }
+    public partial class Class1<T> where T : class, new()//泛型
+    {
+        static void StaticFunction<F>(out F a)
+        {
+            a = default(F);
+        }
+    }
+    public static class ExtendFunction
+    {
+        static ExtendFunction()
+        {
+            global::System.Int32 nbr = "3".ToInt();//global::从全局开始查找
+        }
+        //扩展方法（只能在静态类中）
+        public static int ToInt(this string str)
+        {
+            return int.Parse(str);
+        }
     }
 }
 ```
@@ -113,9 +199,6 @@ public static class Class2
 * **T : struct** *T为值类型*
 * **T : new()** *必须有无参的构造函数*
 * **T : interface|class** *继承接口或类*
-### 协变逆变
-* `逆变` **in** *作为输入，只能被使用*
-* `协变` **out** *作为输出，只能被返回*
 
 ## 集合
  ### 接口
