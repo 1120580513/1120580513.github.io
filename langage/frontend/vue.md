@@ -4,6 +4,18 @@
 
 [官方文档](https://cn.vuejs.org/v2/guide/)
 
+## Init
+
+```bash
+npm --registry https://registry.npm.taobao.org info underscore
+npm install -g vue-cli  
+vue init webpack <my-project-name> 
+npm install
+npm run dev
+```
+
+
+
 ## Demo
 ```html
 <body>   

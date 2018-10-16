@@ -124,3 +124,23 @@ url: '/someUrl'
 // 请求失败执行代码
 });
 ```
+
+## 指令
+
+* `ng-app` 初始化一个应用程序
+* `ng-init` 初始化数据 *ng-init="key='value';nbr=3"*
+* `ng-controller` 控制器
+* `ng-model` 双向绑定
+* `ng-bind` 绑定数据  *{{}}*
+* `ng-repeat` 重复元素
+
+```javascript
+<select><option ng-repeat="item in list">{{item}}</opt
+ion></select>
+```
+
+* `ng-options` 选择框，作用于select
+* `ng-disabled` 绑定至HTML元素的disabled属性，指示是否可用
+* `ng-show` 是否显示
+* `ng-hide` 是否隐藏
+

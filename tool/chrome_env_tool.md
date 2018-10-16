@@ -11,4 +11,6 @@
 ## Plug-In
 
 * `wappalyzer` 分析网站使用技术
+* `JSON Formatter` JSON格式化
+* `Lighthose` 蓝灯，用于分析网站：F12 -> Audits
 
