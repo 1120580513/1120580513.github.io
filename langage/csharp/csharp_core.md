@@ -32,13 +32,13 @@
 - **`Add-Migration InitNoteDB`** ：生成迁移文件
 - **`Update-Database`** ：生成数据库
 
+### EF Core
 
-###EF Core
 - **`dotnet ef migrations add InitNoteDB`** ：生成迁移文件
 - **`dotnet ef database update`** ：生成数据库
 
+###  EF Core Nuget
 
-###EF Core Nuget
 - **`Add-Migration InitNoteDB`** ：生成迁移文件
 - **`Update-Database`** ：生成数据库
 

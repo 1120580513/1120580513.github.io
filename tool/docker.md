@@ -2,8 +2,16 @@
 
 ---
 
+## 切换源
+
+```shell
+
+```
+
+
 
 ## 查看
+
 * **docker --version**：*检查版本*
 * **docker --info**：*查看信息*
 * **docker image ls --all**：*查看镜象*

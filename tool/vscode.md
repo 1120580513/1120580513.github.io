@@ -26,51 +26,58 @@
 
 ``` json
 {
-    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.fontFamily": "monospace",
-    "terminal.integrated.fontSize": 16,
-    "workbench.colorTheme": "Solarized Light",
-    "workbench.iconTheme": "material-icon-theme",
-    "files.autoSave": "onWindowChange",
-    "files.trimTrailingWhitespace": true,
-    "files.associations": {
-        "*.es": "javascript",
-        "*.es6": "javascript"
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.iconTheme": "vscode-icons",
+  "files.autoSave": "off",
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.es": "javascript",
+    "*.es6": "javascript"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/.idea": true
+  },
+  "editor.formatOnSave": false,
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": true,
+  "editor.renderIndentGuides": false,
+  "editor.occurrencesHighlight": false,
+  "editor.tabSize": 2,
+  "editor.fontSize": 18,
+  "editor.minimap.maxColumn": 120,
+  "editor.rulers": [100],
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "vue",
+      "autoFix": true
     },
-    "editor.fontFamily": "'Fira Code'",
-    "editor.formatOnSave": true,
-    "editor.fontLigatures": true,
-    "editor.minimap.enabled": true,
-    "editor.renderIndentGuides": false,
-    "editor.occurrencesHighlight": false,
-    "editor.fontSize": 22,
-    "editor.minimap.maxColumn": 120,
-    "editor.rulers": [
-        100
-    ],
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/dist": true,
-        "**/coverage": true,
-        "**/doc": true
-    },
-    "git.confirmSync": false,
-    //eslint：检查语法
-    "eslint.autoFixOnSave": true,
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "html",
-        "jsx",
-        "vue",
-        {
-            "language": "html",
-            "autoFix": true
-        }
-    ],
-    "editor.tabSize": 2,
-    "explorer.confirmDelete": false
+    "html",
+    "vue"
+  ],
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.eslintIntegration": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/doc": true
+  },
+  "git.confirmSync": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "emmet.includeLanguages": {
+    "javascript" : "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true
 }
 ```
