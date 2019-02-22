@@ -10,7 +10,21 @@
 
 ## Plug-In
 
-* `wappalyzer` 分析网站使用技术
-* `JSON Formatter` JSON格式化
-* `Lighthose` 蓝灯，用于分析网站：F12 -> Audits
+* `Web Developer`
+* `Screen Capture, Screenshot & Record`
+* `Tab Resize`
+* `Lighthouse`
+* `滴答清单`
+* `User-Agent Switcher for Chrome`
+* `Axure RP Extension for Chrome`
+* `Page Ruler`
+* `Wappalyzer`
+* `JSON-handle`
+* `XPath Helper`
+* `掘金`
+* `Web Maker`
+* `WEB前端助手(FeHelper)`
 
+### React
+* `React Developer Tools`
+* `Redux DevTools`
